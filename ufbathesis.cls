@@ -363,7 +363,7 @@ grau de \@degree\ em \@majorfield.}
 
     \hspace{2.5em}
     \vfill
-    Sistema de Bibliotecas - UFBA
+    Sistema de Bibliotecas -- UFBA
 
     \framebox[\textwidth][c]{
       \hspace{1.75em}
