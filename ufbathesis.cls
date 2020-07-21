@@ -104,10 +104,17 @@
   \RequirePackage[dvips]{graphicx}
   \RequirePackage[dvips,usenames]{color}
   \RequirePackage{hyperref}
-  \hypersetup{colorlinks=true,
-            linkcolor=black,
-            urlcolor=black,
-            citecolor=black}
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black,
+    %pdftitle={},
+    %pdfauthor={},
+    pdfstartview={FitH},
+    final=true,
+  }
 \fi
 \RequirePackage[alf]{abntex2cite}
 \RequirePackage{lastpage}
