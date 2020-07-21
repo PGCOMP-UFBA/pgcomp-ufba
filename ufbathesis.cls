@@ -4,6 +4,7 @@
 %%% (C) 2003--2005 Paulo Gustavo Soares Fonseca
 %%% (C) 2012 Antonio Terceiro
 %%% (C) 2014 Christina von Flach
+%%% (c) 2020 Fernanda Lopes
 %%% THIS FILE COMES WITH NO WARRANTIES
 %%% PERMISSION TO COPY AND REDISTRIBUTE FREE OF CHARGE
 %%% FOR ACADEMIC PURPOSES ONLY
