@@ -223,7 +223,7 @@ grau de \@degree\ em \@majorfield.}
 \def\institute#1{%
   \let\@showinstitute=1
   \gdef\@institute{#1}}
-\institute{Instituto de Matem\'{a}tica}
+\institute{Instituto de Matem\'{a}tica e Estat\'{i}stica}
 
 \def\program#1{%
   \gdef\@program{#1}}
