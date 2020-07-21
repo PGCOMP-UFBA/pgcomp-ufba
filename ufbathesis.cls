@@ -518,6 +518,43 @@ grau de \@degree\ em \@majorfield.}
   \end{center}
 }
 
+\def\pgcompfrontpagebsc#1{%
+ \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{empty}
+  \begin{center}
+    \includegraphics[width=2cm]{ufba}
+    \\
+  \sf\large
+  \textbf{%
+    \MakeTextUppercase{\@university}}
+  \vskip 25mm
+  \textbf{\MakeTextUppercase{\@texttype}}
+  \vskip 25mm
+  \begin{minipage}{150mm}
+    \begin{center}
+      \textbf{\@title}
+      \vskip\baselineskip
+      \@author
+      \vskip 45mm
+      \if\@degreetype0
+        \textbf{\@program}
+      \else
+        \textbf{\@program}
+      \fi
+      \\
+      \vskip\baselineskip
+      \@address\\
+      \@date
+    \end{center}
+  \end{minipage}\\
+  \vfill
+  \end{center}
+  \begin{flushright}
+  \sf\large
+  #1
+  \end{flushright}
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Presentation page
