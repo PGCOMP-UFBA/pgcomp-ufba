@@ -17,7 +17,9 @@ MAKEIDX   = "^[^%]*\\makeindex"
 MPRINT    = "^[^%]*print"
 USETHUMBS = "^[^%]*thumbpdf"
 
-all: qual prop msc phd bsc
+all: bsc qual prop msc phd
+
+bsc: template-bsc.dvi template-bsc.pdf
 
 qual: template-qual.dvi template-qual.pdf
 
@@ -26,8 +28,6 @@ msc: template-msc.dvi template-msc.pdf
 prop: template-prop.dvi template-prop.pdf
 
 phd: template-phd.dvi template-phd.pdf
-
-bsc: template-bsc.dvi template-bsc.pdf
 
 %.dvi: %.tex ufbathesis.cls
 	latex $<
@@ -49,7 +49,8 @@ $(TARBALL): ufbathesis.cls abntex2-alf.bst
 index.html: README.md
 	(pandoc -s -f markdown -t html $< | sed -e 's/##VERSION##/$(VERSION)/g' > $@) || ($(RM) $@; false)
 
-upload: $(TARBALL) index.html template-qual.tex template-msc.tex template-prop.tex template-phd.tex template-bsc.tex .htaccess
+upload: $(TARBALL) index.html template-bsc.tex template-qual.tex\
+  template-msc.tex template-prop.tex template-phd.tex .htaccess
 	rsync -avp $^ $(UPLOAD_TO)
 
 clean:
