@@ -30,16 +30,16 @@ prop: template-prop.dvi template-prop.pdf
 phd: template-phd.dvi template-phd.pdf
 
 %.dvi: %.tex ufbathesis.cls
-	latex $<
+	latex -src -interaction=nonstopmode $<
 
 %.pdf: %.tex ufbathesis.cls
-	pdflatex $<
+	pdflatex -interaction=nonstopmode $<
 
 %.bbl %.blg : biblio.bib %.aux
 	bibtex $<
 
 %.aux : %.tex
-	latex $<
+	latex -src -interaction=nonstopmode $<
 
 dist: $(TARBALL)
 
