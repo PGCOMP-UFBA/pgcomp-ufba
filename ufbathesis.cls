@@ -548,41 +548,40 @@ Computa\c{c}\~{a}o}
   \end{center}
 }
 
-\def\pgcompfrontpagebsc#1{%
+\def\pgcompfrontpagebsc{%
  \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
+
+  %---------- CAPA -------------
+
+  \pagestyle{empty}
   \begin{center}
-    \includegraphics[width=2cm]{ufba}
-    \\
-  \sf\large
-  \textbf{%
-    \MakeTextUppercase{\@university}}
-  \vskip 25mm
-  \textbf{\MakeTextUppercase{\@texttype}}
-  \vskip 25mm
-  \begin{minipage}{150mm}
-    \begin{center}
-      \textbf{\@title}
-      \vskip\baselineskip
-      \@author
-      \vskip 45mm
-      \if\@degreetype0
-        \textbf{\@program}
-      \else
-        \textbf{\@program}
-      \fi
-      \\
-      \vskip\baselineskip
-      \@address\\
-      \@date
-    \end{center}
-  \end{minipage}\\
-  \vfill
+    \includegraphics[height=2.5cm]{ufba}
+    \hspace{2cm}
+    \includegraphics[height=2.5cm]{IM}
+    \hspace{2cm}
+    \includegraphics[height=2.5cm]{dccufba}
   \end{center}
-  \begin{flushright}
-  \sf\large
-  #1
-  \end{flushright}
+
+  \begin{center}
+    \sc{\large{\@university}} \\
+    \sc{\large{\@institute}} \\
+    \sc{\large{\@program}} \\
+    \sc{\small{\@texttype}} \\
+
+    \vspace{4cm}
+
+    \sc{\Large{\@title}}
+
+    \vspace{4.5cm}
+
+    \sc{\Large{\@author}}
+
+    \vspace{5.5cm}
+
+    \textbf{\@address} \\
+    \@date
+  \end{center}
 }
 
 
