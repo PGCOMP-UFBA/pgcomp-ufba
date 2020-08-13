@@ -633,9 +633,8 @@ Computa\c{c}\~{a}o}
     \begin{minipage}{0.5\textwidth}
       \if\@degreetype0
         % Trabalho de graduacao
-        Este\@texttype\ foi apresentado ao \@program\ da \@university,
-        como requisito parcial para obten\c{c}\~{a}o do grau de\@degree\
-        em \@majorfield.
+        \@texttype\ apresentado como requisito parcial para obten\c{c}\~{a}o do
+        t\'{i}tulo de\@degree\ em \@majorfield.
       \else
         Esta\@texttype\ foi apresentada ao \@program\ da \@university, como
         requisito parcial para obten\c{c}\~{a}o do grau de\@degree\ em
