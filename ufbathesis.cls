@@ -110,17 +110,15 @@
 \if\@scr1
   \RequirePackage[dvips]{graphicx}
   \RequirePackage[dvips,usenames]{color}
-  \RequirePackage{hyperref}
+  %% Use backref para referenciar as secoes onde aconteceu a citacao
+  \RequirePackage[backref,bookmarks]{hyperref}
+  \definecolor{linkcolorscr}{rgb}{0,0,0.67}
   \hypersetup{
     colorlinks=true,
-    linkcolor=black,
-    citecolor=black,
-    filecolor=black,
-    urlcolor=black,
-    %pdftitle={},
-    %pdfauthor={},
-    pdfstartview={FitH},
-    final=true,
+    linkcolor=linkcolorscr,
+    urlcolor=linkcolorscr,
+    citecolor=linkcolorscr,
+    pdfstartview={FitH}
   }
 \fi
 %
