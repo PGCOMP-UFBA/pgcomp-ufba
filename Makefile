@@ -33,7 +33,7 @@ phd: template-phd.dvi template-phd.pdf
 	latex -src -interaction=nonstopmode $<
 
 %.pdf: %.tex ufbathesis.cls
-	pdflatex -interaction=nonstopmode $<
+	pdflatex -synctex=1 -interaction=nonstopmode $<
 
 %.bbl %.blg : biblio.bib %.aux
 	bibtex $<
@@ -55,5 +55,5 @@ upload: $(TARBALL) index.html template-bsc.tex template-qual.tex\
 
 clean:
 	$(RM) $(TARBALL)
-	$(RM) *.bbl *.blg *.aux *.lof *.log *.lot *.toc *.out template*.pdf template*.dvi
+	$(RM) *.aux *.bbl *.blg *.brf *.lof *.log *.lot *.out *.synctex.* *.toc template*.dvi template*.pdf
 	$(RM) index.html

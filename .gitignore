@@ -6,3 +6,7 @@
 *.lof
 *.lot
 *.toc
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
