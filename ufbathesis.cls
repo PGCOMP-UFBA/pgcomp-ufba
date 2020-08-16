@@ -550,12 +550,10 @@ Computa\c{c}\~{a}o}
 }
 
 \def\pgcompfrontpagebsc{%
- \if@openright\cleardoublepage\else\clearpage\fi
+  \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
 
   %---------- CAPA -------------
-
-  \pagestyle{empty}
   \begin{center}
     \includegraphics[height=2.5cm]{ufba}
     \hspace{2cm}
