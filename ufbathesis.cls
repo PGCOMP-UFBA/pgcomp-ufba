@@ -4,13 +4,14 @@
 %%% (C) 2003--2005 Paulo Gustavo Soares Fonseca
 %%% (C) 2012 Antonio Terceiro
 %%% (C) 2014 Christina von Flach
+%%% (c) 2020 Fernanda Lopes
 %%% THIS FILE COMES WITH NO WARRANTIES
 %%% PERMISSION TO COPY AND REDISTRIBUTE FREE OF CHARGE
 %%% FOR ACADEMIC PURPOSES ONLY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%    Author              = "Paulo G. S. Fonseca and Antonio Terceiro and Christina von Flach",
-%%%    Version             = "1.0",
-%%%    Date                = "26 Nov 2014",
+%%%    Version             = "1.1",
+%%%    Date                = "21 Jul 2020",
 %%%    Filename            = "ufbathesis.cls",
 %%%    Address             = "Universidade Federal da Bahia
 %%%                           Instituto de Matematica",
@@ -23,7 +24,7 @@
 %%%    SeeAlso             = "book.sty",
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesClass{ufbathesis}[2014/11/26]
+\ProvidesClass{ufbathesis}[2020/07/21]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% OPTIONS
@@ -98,17 +99,37 @@
 \fi
 \if\@scr0
   \RequirePackage{graphicx}
+  \RequirePackage[bookmarks]{hyperref}
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black
+  }
 \fi
 \if\@scr1
   \RequirePackage[dvips]{graphicx}
-  \RequirePackage[dvips,usenames]{color}
-  \RequirePackage{hyperref}
-  \hypersetup{colorlinks=true,
-            linkcolor=black,
-            urlcolor=black,
-            citecolor=black}
+  \RequirePackage[usenames]{color}
+  %% Use backref para referenciar as secoes onde aconteceu a citacao
+  \RequirePackage[backref,bookmarks]{hyperref}
+  %\RequirePackage[bookmarks]{hyperref}
+  \definecolor{linkcolorscr}{rgb}{0,0,0.67}
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolorscr,
+    urlcolor=linkcolorscr,
+    citecolor=linkcolorscr,
+    pdfstartview={FitH}
+  }
 \fi
-\RequirePackage[alf]{abntex2cite}
+%
+%## By @Renato-2020
+%%%% Lista completa de autores nas referências e et. al (para mais de três
+%%%% autores) no texto.
+%\RequirePackage[alf,abnt-etal-list=0,abnt-etal-cite=3]{abntex2cite}
+%## By @NandaLopes
+%## Padrao anterior, com 2 autores
+\RequirePackage[alf,abnt-etal-cite=2]{abntex2cite}
 \RequirePackage{lastpage}
 \RequirePackage[top=3cm, bottom=2cm, left=3cm, right=2cm]{geometry}
 \RequirePackage{fix-cm}
@@ -136,7 +157,7 @@
 \gdef\@femaleadvisertitle{Orientadora}
 \gdef\@malecoadvisertitle{Co-orientador}
 \gdef\@femalecoadvisertitle{Co-orientadora}
-\gdef\@bachelordissertation{Trabalho de Gradua\c{c}\~{a}o}
+\gdef\@bachelordissertation{Trabalho de Conclus\~{a}o de Curso}
 \gdef\@mastersdissertation{Disserta\c{c}\~{a}o de Mestrado}
 \gdef\@mscqualifying{Qualifica\c{c}\~{a}o de Mestrado}
 \gdef\@phdproposal{Qualifica\c{c}\~{a}o de Doutorado}
@@ -145,9 +166,8 @@
 \gdef\@mastersdegree{Mestre}
 \gdef\@phddegree{Doutor}
 \gdef\@presentationtext{%
-Trabalho apresentado ao
-\@program\ do \@institute\ da \@university\ como requisito parcial para obten\c{c}\~{a}o do
-grau de \@degree\ em \@majorfield.}
+  Trabalho apresentado ao \@program\ do \@institute\ da \@university\ como
+  requisito parcial para obten\c{c}\~{a}o do grau de \@degree\ em \@majorfield.}
 \gdef\resumoname{Resumo}
 \gdef\abstrname{Abstract}
 \gdef\keywordsnamePT{Palavras-chave}
@@ -223,12 +243,13 @@ grau de \@degree\ em \@majorfield.}
 \def\institute#1{%
   \let\@showinstitute=1
   \gdef\@institute{#1}}
-\institute{Instituto de Matem\'{a}tica}
+\institute{Instituto de Matem\'{a}tica e Estat\'{i}stica}
 
 \def\program#1{%
   \gdef\@program{#1}}
 \def\@program{\@notdefined}
-\program{Programa de P\'{o}s-gradua\c{c}\~{a}o em Ci\^{e}ncia da Computa\c{c}\~{a}o}
+\program{Programa de P\'{o}s-gradua\c{c}\~{a}o em Ci\^{e}ncia da
+Computa\c{c}\~{a}o}
 
 \def\majorfield#1{%
   \gdef\@majorfield{#1}}
@@ -350,7 +371,7 @@ grau de \@degree\ em \@majorfield.}
 
     \hspace{2.5em}
     \vfill
-    Sistema de Bibliotecas - UFBA
+    Sistema de Bibliotecas -- UFBA
 
     \framebox[\textwidth][c]{
       \hspace{1.75em}
@@ -418,8 +439,15 @@ grau de \@degree\ em \@majorfield.}
     \vspace{2em}
     \begin{flushright}
       \begin{minipage}{0.5\textwidth}
-        Esta\@texttype\ foi julgada adequada \`{a} obten\c{c}\~{a}o do t\'{i}tulo de\@degree\
-        em \@majorfield\ e aprovada em sua forma final pelo \@program\ da \@university.
+        \if\@degreetype0
+          Este\@texttype\ foi julgado adequado \`{a} obten\c{c}\~{a}o do
+          t\'{i}tulo de\@degree\ em \@majorfield\ e aprovado em sua forma final
+          pelo Colegiado do \@program\ da \@university.
+        \else
+          Esta\@texttype\ foi julgada adequada \`{a} obten\c{c}\~{a}o do
+          t\'{i}tulo de\@degree\ em \@majorfield\ e aprovada em sua forma final
+          pelo \@program\ da \@university.
+        \fi
       \end{minipage}
     \end{flushright}
 
@@ -453,8 +481,17 @@ grau de \@degree\ em \@majorfield.}
 %% Fonts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\font\quotefont=cmssq8 scaled\magstep1
-\font\quotefonti=cmssqi8 scaled\magstep1
+%\font\quotefont=cmssq8 scaled\magstep1
+%\font\quotefonti=cmssqi8 scaled\magstep1
+
+%## By Renato in 2020.
+%Comentei as 2 linhas acima e redefini as fontes abaixo para que letras
+%acentuadas apareçam, mesmo com o pacote T1 fontenc (definiçao com \font causa
+%conflito com fontenc)
+%[https://pt.overleaf.com/learn/latex/Font_sizes,_families,_and_styles#Reference_guide].
+\newcommand\quotefont{\fontencoding{T1}\upshape\sffamily\normalsize}
+\newcommand\quotefonti{\fontencoding{T1}\itshape\sffamily\normalsize}
+%##
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -462,7 +499,7 @@ grau de \@degree\ em \@majorfield.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\frontpage{%
-	\if@openright\cleardoublepage\else\clearpage\fi
+  \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
   \begin{center}
   \sf\large
@@ -487,7 +524,7 @@ grau de \@degree\ em \@majorfield.}
 }
 
 \def\pgcompfrontpage{%
-	\if@openright\cleardoublepage\else\clearpage\fi
+  \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
   \begin{center}
   \includegraphics[width=2cm]{ufba}\\
@@ -509,6 +546,40 @@ grau de \@degree\ em \@majorfield.}
   \vfill
   \@address\\
   \@date
+  \end{center}
+}
+
+\def\pgcompfrontpagebsc{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{empty}
+
+  %---------- CAPA -------------
+  \begin{center}
+    \includegraphics[height=2.5cm]{ufba}
+    \hspace{2cm}
+    \includegraphics[height=2.5cm]{IM}
+    \hspace{2cm}
+    \includegraphics[height=2.5cm]{dccufba}
+  \end{center}
+
+  \begin{center}
+    \sc{\large{\@university}} \\
+    \sc{\large{\@institute}} \\
+    \sc{\large{\@program}} \\
+    \sc{\small{\@texttype}} \\
+
+    \vspace{4cm}
+
+    \sc{\Large{\@title}}
+
+    \vspace{4.5cm}
+
+    \sc{\Large{\@author}}
+
+    \vspace{5.5cm}
+
+    \textbf{\@address} \\
+    \@date
   \end{center}
 }
 
@@ -559,9 +630,15 @@ grau de \@degree\ em \@majorfield.}
   \vskip 45mm
   \begin{flushright}
     \begin{minipage}{0.5\textwidth}
-        Esta\@texttype\ foi apresentada ao \@program\ da \@university,
-        como requisito parcial para obten\c{c}\~{a}o do grau de\@degree\
-        em \@majorfield.
+      \if\@degreetype0
+        % Trabalho de graduacao
+        \@texttype\ apresentado como requisito parcial para obten\c{c}\~{a}o do
+        t\'{i}tulo de\@degree\ em \@majorfield.
+      \else
+        Esta\@texttype\ foi apresentada ao \@program\ da \@university, como
+        requisito parcial para obten\c{c}\~{a}o do grau de\@degree\ em
+        \@majorfield.
+      \fi
     \end{minipage}
   \end{flushright}
   \begin{center}

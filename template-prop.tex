@@ -24,10 +24,12 @@
 %%           oneside - para impressao em face unica
 %%           twoside - para impressao em frente e verso (padrao)
 
-% Aten��o: Manter 'classic' na declaracao abaixo:
+% Atencao: Manter 'classic' na declaracao abaixo:
 \documentclass[en, prop, classic, a4paper]{ufbathesis}
 
 %% Preambulo:
+\usepackage[T1]{fontenc} %muda a codificação da fonte, tornando possível copiar textos com acentos no arquivo de saída, pdf.
+\usepackage{lmodern} %usado com [T1], tornará as fontes com contornos de alta qualidade para as três famílias de fontes LaTeX.
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{lipsum}
@@ -36,7 +38,7 @@
 \usepackage{booktabs}
 \usepackage{pifont}
 \usepackage{multirow}
-\usepackage{listings} 
+\usepackage{listings}
 \usepackage{colortbl}
 \usepackage{xfrac}
 \usepackage[FIGTOPCAP]{subfigure}

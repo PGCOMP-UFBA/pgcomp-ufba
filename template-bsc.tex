@@ -24,8 +24,8 @@
 %%           oneside - para impressao em face unica
 %%           twoside - para impressao em frente e verso (padrao)
 
-% Atencao: Manter 'classic' na declaracao abaixo:
-\documentclass[qual, classic, a4paper]{ufbathesis}
+% Atenção: Manter 'classic' na declaracao abaixo:
+\documentclass[bsc, classic, a4paper]{ufbathesis}
 
 %% Preambulo:
 \usepackage[T1]{fontenc} %muda a codificação da fonte, tornando possível copiar textos com acentos no arquivo de saída, pdf.
@@ -34,6 +34,7 @@
 \usepackage{graphicx}
 \usepackage[printonlyused,withpage]{acronym}
 \usepackage{lipsum}
+
 
 % Universidade
 \university{Universidade Federal da Bahia}
@@ -47,20 +48,20 @@
 % Nome da biblioteca - usado na ficha catalografica
 \library{Biblioteca Reitor Mac\^{e}do Costa}
 
-% Programa de pos-graduacao
-\program{Programa de P\'{o}s-Gradua\c{c}\~{a}o em Ci\^{e}ncia da Computa\c{c}\~{a}o}
+% Colegiado de graduacao
+\program{Bacharelado em Ci\^{e}ncia da Computa\c{c}\~{a}o}
 
 % Area de titulacao
 \majorfield{Ci\^{e}ncia da Computa\c{c}\~{a}o}
 
 % Titulo da dissertacao
-\title{T\'{\i}tulo da Disserta\c{c}\~{a}o ou Tese}
+\title{T\'{\i}tulo da Disserta\c{c}\~{a}o ou Tese ou Monografia}
 
 % Data da defesa
 % e.g. \date{19 de fevereiro de 2013}
-\date{13 de janeiro de 2014}
+\date{21 de julho de 2020}
 % e.g. \defenseyear{2013}
-\defenseyear{2014}
+\defenseyear{2020}
 
 % Autor
 % e.g. \author{Jose da Silva}
@@ -80,13 +81,59 @@
 %% Inicio do documento
 \begin{document}
 
-\pgcompfrontpage
+\pgcompfrontpagebsc
 
 %% Parte pre-textual
 \frontmatter
 
 \pgcomppresentationpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ficha catalografica
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\authorcitationname{Sobrenome, Nome do ALUNO (usado em CITACOES)} % e.g. Terceiro, Antonio Soares de Azevedo
+\advisercitationname{Sobrenome, Nome do ORIENTADOR} % e.g. Chavez, Christina von Flach Garcia
+\coadvisercitationname{Sobrenome, Nome do CO-ORIENTADOR} % e.g. Mendonca, Manoel Gomes de
+\catalogtype{Monografia (Gradua\c{c}\~{a}o)} % e.g. ou ``Tese (Doutorado)''
+%\catalogtype{Disserta\c{c}\~{a}o (Mestrado)} % e.g. ou ``Tese (Doutorado)''
+
+\catalogtopics{1. Primeira palavra-chave. 2. Segunda palavra-chave. 3. Terceira palavra-chave} % Listar palavras-chave do trabalho para a FICHA CATALOGRAFICA}, por exemplo, ``1. Complexidade Estrutural. 2. Qualidade de Software 3. Engenharia de Software''
+\catalogcdd{XXX.XX} % e.g.  XXX.XX (número nesse formato serah dado pela biblioteca)
+\catalogcdu{XXX.XX.XXX} % e.g.  XXX.XX.XXX (idem) 
+\catalogingsheet
+
+%%%%%%%%%%%%%%%%%%%%%
+% Termo de aprovacaoo
+%%%%%%%%%%%%%%%%%%%%%
+
+\approvalsheet{Salvador, DIA de MES de ANO}{
+   \comittemember{Profa. Dra. Professora 1}{Universidade XYZ}
+   \comittemember{Prof. Dr. Professor 2}{Universidade 123}
+   \comittemember{Profa. Dra. Professora 3}{Universidade ABC}
+   % Para mestrado, apenas 3.
+   % \comittemember{Prof. Dr. Professor 4}{Universidade HJKL}
+   % \comittemember{Profa. Dra. Professora 5}{Universidade QWERTY}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dedicatoria, Agradecimentos, Epigrafe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Comente para ocultar
+\begin{dedicatory}
+DIGITE A DEDICATORIA AQUI
+\end{dedicatory}
+
+% Agradecimentos
+% Se preferir, crie um arquivo `a parte e o inclua via \include{}
+\acknowledgements
+DIGITE OS AGRADECIMENTOS AQUI
+
+% Epigrafe
+\begin{epigraph}[NOTA]{AUTOR}
+DIGITE AQUI A CITACAO
+\end{epigraph}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Resumo em Portugues
@@ -112,12 +159,15 @@ PALAVRAS-CHAVE.
 % Resumo em Ingles
 %%%%%%%%%%%%%%%%%%%
 
+\begin{otherlanguage*}{english}
 \abstract
-COLOQUE O RESUMO EM INGL\^{E}S. Se preferir, crie um arquivo separado e o inclua via comando include.
+
+PUT THE ENGLISH ABSTRACT. If you'd prefer, create a separated file and include it with \texttt{include} command.
 % Palavras-chave do resumo em Ingles
 \begin{keywords}
-PALAVRAS-CHAVE EM INGL\^{E}S.
+KEYWORDS IN ENGLISH.
 \end{keywords}
+\end{otherlanguage*}
 
 %%%%%%%%%%%%%%%%%%%
 % Sumario / Indice
@@ -169,7 +219,7 @@ Trabalho do  \ac{PGCOMP}. Bolsa do \ac{CNPq}.
 
 \begin{figure}[h]
     Figure
-    \caption{As siglas também funcionam nas legendas, seja na forma de sigla \ac{CNPq}, seja na forma completa \acf{PGCOMP}.}
+    \caption[As siglas também funcionam nas legendas]{As siglas também funcionam nas legendas, seja na forma de sigla \ac{CNPq}, seja na forma completa \acf{PGCOMP}.}
 \end{figure}
 
 \lipsum
@@ -181,9 +231,9 @@ Texto para mostrar como o \verb|\acresetall| funciona \ac{CNPq}, \ac{PGCOMP}. El
 \subsection{Outra Subse\c{c}\~{a}o}
 
 Texto  \acf{CNPq}, \acf{PGCOMP}.
-\xchapter{Revis\~{a}o Bibliogr\'{a}fica}{Neste cap\'{\i}tulo eu apresento todo o material que eu estudei durante a elabora\c{c}\~{a}o do trabalho.}
 
-\lipsum
+
+\xchapter{Revis\~{a}o Bibliogr\'{a}fica}{Neste cap\'{\i}tulo eu apresento todo o material que eu estudei durante a elabora\c{c}\~{a}o do trabalho.}
 
 Livro \cite{demeyer2008} e  livro \cite{raymond1999}.
 
